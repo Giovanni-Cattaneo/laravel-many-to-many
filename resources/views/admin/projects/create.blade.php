@@ -40,6 +40,16 @@
                 </select>
             </div>
 
+            <div class="form-check d-flex">
+                @foreach ($technologies as $technology)
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="" id="" />
+                        <label class="form-check-label mx-5" for="">{{ $technology->name }}</label>
+                    </div>
+                @endforeach
+            </div>
+
+
             <div class="mb-3">
                 <label for="cover_image" class="form-label">Img</label>
                 <input type="file" class="form-control @error('cover_image') is-invalid @enderror" name="cover_image"
