@@ -67,8 +67,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $technologies = Technology::all();
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -87,6 +88,10 @@ class ProjectController extends Controller
             }
             $img_path = Storage::put('uploads', $valData['cover_image']);
             $valData['cover_image'] = $img_path;
+        }
+
+        if ($request->has('technology_ids')) {
+            $project->technologies()->sync($request->input('technology_ids'));
         }
 
         $project->update($valData);
