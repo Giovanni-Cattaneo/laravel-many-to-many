@@ -40,9 +40,9 @@
                 </select>
             </div>
 
-            <div class="form-check d-flex">
+            <div class="form-check d-flex gap-3">
                 @foreach ($technologies as $technology)
-                    <div class="mr-3">
+                    <div class="mx-2">
                         <input name="technology_ids[]" class="form-check-input" type="checkbox"
                             value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
                             {{ in_array($technology->id, old('technology_ids', [])) ? 'checked' : '' }} />
