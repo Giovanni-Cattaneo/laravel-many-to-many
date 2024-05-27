@@ -34,7 +34,15 @@
                             </td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->type ? $project->type->category : 'N/A' }}</td>
-                            <td>{{ $project->technology ? $project->technology->name : 'N/A' }}</td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    @foreach ($project->technologies as $technology)
+                                        <li>{{ $technology->name }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </td>
+
                             <td>{{ $project->url_site }}</td>
                             <td>{{ $project->url_source_code }}</td>
                             <td><a href="{{ route('admin.projects.show', $project) }}">Show</a> /
