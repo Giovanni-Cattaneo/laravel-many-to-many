@@ -43,8 +43,10 @@
             <div class="form-check d-flex">
                 @foreach ($technologies as $technology)
                     <div>
-                        <input class="form-check-input" type="checkbox" value="" id="" />
-                        <label class="form-check-label mx-5" for="">{{ $technology->name }}</label>
+                        <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
+                            id="technology_{{ $technology->id }}" />
+                        <label class="form-check-label"
+                            for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
                     </div>
                 @endforeach
             </div>

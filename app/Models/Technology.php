@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Technology extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['name', 'slug'];
     public function projects(): BelongsToMany
     {
-        return $this->belongsToMany('App/Models/Project');
+        return $this->belongsToMany('App\Models\Project');
     }
 }

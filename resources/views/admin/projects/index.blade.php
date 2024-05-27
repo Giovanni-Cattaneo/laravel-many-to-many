@@ -20,6 +20,7 @@
                         <th scope="col">Cover Image</th>
                         <th scope="col">Title</th>
                         <th scope="col">Categoria</th>
+                        <th scope="col">Tech</th>
                         <th scope="col">Url Site</th>
                         <th scope="col">Url Source Code</th>
                         <th scope="col">Actions</th>
@@ -33,6 +34,7 @@
                             </td>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->type ? $project->type->category : 'N/A' }}</td>
+                            <td>{{ $project->technology ? $project->technology->name : 'N/A' }}</td>
                             <td>{{ $project->url_site }}</td>
                             <td>{{ $project->url_source_code }}</td>
                             <td><a href="{{ route('admin.projects.show', $project) }}">Show</a> /

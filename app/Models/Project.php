@@ -16,7 +16,7 @@ class Project extends Model
     }
     public function technologies(): BelongsToMany
     {
-        return $this->belongsToMany('App/Models/Technology');
+        return $this->belongsToMany('App\Models\Technology');
     }
     use HasFactory;
     protected $fillable = ['title', 'category', 'cover_image', 'slug', 'url_site', 'url_source-code', 'type_id'];

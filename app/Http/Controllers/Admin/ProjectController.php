@@ -45,9 +45,14 @@ class ProjectController extends Controller
             $valData['cover_image'] = $img_path;
         }
 
+
         //dd($valData);
 
-        Project::create($valData);
+        $project = Project::create($valData);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($request->input('technologies'));
+        }
 
         return to_route('admin.projects.index')->with('message', "Hai creato un nuovo progetto, congratulazioni");
     }
