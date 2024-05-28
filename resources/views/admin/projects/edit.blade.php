@@ -33,13 +33,25 @@
             </div>
             <div class="form-check d-flex gap-3">
                 @foreach ($technologies as $technology)
-                    <div class="mx-2">
-                        <input name="technology_ids[]" class="form-check-input" type="checkbox"
-                            value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
-                            {{ in_array($technology->id, old('technology_ids', [])) ? 'checked' : '' }} />
-                        <label class="form-check-label"
-                            for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
-                    </div>
+                    @if ($errors->any())
+                        <div class="mx-2">
+                            <input name="technology_ids[]" class="form-check-input"
+                                @error('technologies') is-invalid @enderror type="checkbox" value="{{ $technology->id }}"
+                                id="technology-{{ $technology->id }}"
+                                {{ in_array($technology->id, old('technology_ids', [])) ? 'checked' : '' }} />
+                            <label class="form-check-label"
+                                for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
+                        </div>
+                    @else
+                        <div class="mx-2">
+                            <input name="technology_ids[]" class="form-check-input"
+                                @error('technologies') is-invalid @enderror type="checkbox" value="{{ $technology->id }}"
+                                id="technology-{{ $technology->id }}"
+                                {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
+                            <label class="form-check-label"
+                                for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
+                        </div>
+                    @endif
                 @endforeach
             </div>
             <div class="mb-3">
